@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GrayScript — Development · Story · Script</title>
+<meta name="description" content="GrayScript offers script coverage, story coaching, and development consulting from a working story editor and creative executive with six years on a globally distributed drama series reaching 200M+ viewers.">
+<meta name="keywords" content="script coverage, story editor, script consultant, development executive, pilot script notes, screenplay coverage, story coaching, screenwriting consultant, TV development">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://grayscript.net">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://grayscript.net">
+<meta property="og:title" content="GrayScript — Development · Story · Script">
+<meta property="og:description" content="Script coverage, story coaching, and development consulting from a working creative executive with six years on a globally distributed drama series reaching 200M+ viewers.">
+<meta property="og:site_name" content="GrayScript">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GrayScript — Development · Story · Script">
+<meta name="twitter:description" content="Script coverage and story coaching from a working creative executive. Six years. 200M+ viewers. 180 countries.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-mid: #555;
+    --ink-light: #999;
+    --ink-faint: #bbb;
+    --paper: #fafaf8;
+    --paper-warm: #f4f3ef;
+    --paper-card: #fff;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.2);
+    --accent: #2a2a2a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* SECTIONS */
+  section {
+    min-height: 100vh;
+    padding: 120px 2rem 80px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  section.short {
+    min-height: auto;
+    padding: 100px 2rem 80px;
+  }
+
+  /* HERO */
+  .hero { padding-top: 140px; }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 0.5px;
+    width: 40px;
+    background: var(--ink-faint);
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    max-width: 620px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--ink-mid);
+  }
+
+  .hero-body {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding: 1.75rem 0;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: none;
+    border: 0.5px solid var(--border-strong);
+    padding: 11px 22px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: var(--paper-warm);
+    border-color: var(--ink);
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .btn-primary:hover {
+    background: #333;
+    border-color: #333;
+    color: var(--paper);
+  }
+
+  /* PAGE HEADERS */
+  .page-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .page-intro {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    max-width: 560px;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .service-card {
+    background: var(--paper-card);
+    padding: 2rem;
+  }
+
+  .service-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .service-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin-bottom: 1.25rem;
+  }
+
+  .service-formats {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  /* ABOUT */
+  .about-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--ink-mid);
+    max-width: 580px;
+    margin-bottom: 1.5rem;
+  }
+
+  .pull-quote {
+    font-family: var(--serif);
+    font-size: clamp(20px, 3vw, 26px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.45;
+    border-left: 2px solid var(--border-strong);
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    max-width: 540px;
+  }
+
+  .credits-list {
+    list-style: none;
+    border-top: 0.5px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  .credits-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.85rem 0;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 14px;
+    gap: 1rem;
+  }
+
+  .credit-title {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .credit-detail {
+    font-weight: 300;
+    color: var(--ink-mid);
+    text-align: right;
+    font-size: 13px;
+  }
+
+  /* CONTACT FORM */
+  .form-wrap {
+    max-width: 560px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    margin-bottom: 0.4rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--paper-card);
+    border: 0.5px solid var(--border-strong);
+    outline: none;
+    appearance: none;
+    transition: border-color 0.2s;
+    border-radius: 0;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--ink);
+  }
+
+  textarea {
+    min-height: 130px;
+    resize: vertical;
+    line-height: 1.65;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 13px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover { background: #333; }
+  .submit-btn:disabled { background: var(--ink-light); cursor: default; }
+
+  .form-success {
+    display: none;
+    padding: 1.25rem;
+    background: var(--paper-warm);
+    border: 0.5px solid var(--border);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink-light);
+  }
+
+  .footer-note {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* DIVIDER */
+  hr {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.4s; }
+  .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    nav { padding: 0 1.25rem; }
+    section { padding: 100px 1.25rem 60px; }
+    .hero { padding-top: 100px; }
+    .hero-stats { flex-direction: column; gap: 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .credits-list li { flex-direction: column; gap: 0.2rem; }
+    .credit-detail { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-brand">GrayScript</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hero">
+  <p class="hero-eyebrow fade-in">Development · Story · Script</p>
+  <h1 class="hero-headline fade-in">Your story deserves <em>an executive eye.</em></h1>
+  <p class="hero-body fade-in">Six years as story editor, producer, and creative executive on one of the most-watched independent drama series ever made. Now working with writers and projects directly.</p>
+
+  <div class="hero-stats fade-in">
+    <div>
+      <div class="stat-number">200M+</div>
+      <div class="stat-label">Global viewers</div>
+    </div>
+    <div>
+      <div class="stat-number">180+</div>
+      <div class="stat-label">Countries reached</div>
+    </div>
+    <div>
+      <div class="stat-number">6 yrs</div>
+      <div class="stat-label">Story · Production · Development</div>
+    </div>
+  </div>
+
+  <div class="fade-in" style="display:flex; gap:1rem; flex-wrap:wrap;">
+    <a href="#services" class="btn btn-primary">View services</a>
+    <a href="#contact" class="btn">Get in touch</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="short">
+  <p class="page-eyebrow">What I offer</p>
+  <h2 class="page-title">Services</h2>
+  <p class="page-intro">Everything below comes from six years inside a writers room, a production pipeline, and a company-level development slate — combined with fifteen years working directly in social services. That combination is rare. It shows up in the work.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <div class="service-title">Script Coverage</div>
+      <p class="service-desc">A full editorial read of your feature, pilot, or short — written from the perspective of a working story editor who has given notes across 24 produced episodes of a globally distributed drama. You'll receive detailed response on structure, character, dialogue, and what the script is doing versus what it's trying to do. This is not a coverage service. It's a development conversation.</p>
+      <div class="service-formats">Feature · Pilot · Short · Treatment</div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <div class="service-title">Story Coaching</div>
+      <p class="service-desc">Ongoing or one-time creative development sessions for writers building a project. Ideal for writers working on a pilot or feature who want a creative executive's perspective on story structure, character architecture, pitch positioning, and market fit. Fifteen years of direct social services experience informs a particular attention to character psychology and emotional truth.</p>
+      <div class="service-formats">Single session · Ongoing · Project-based</div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <div class="service-title">Development Consulting</div>
+      <p class="service-desc">For small production companies, indie producers, or writers preparing to pitch. IP evaluation, slate development input, and editorial notes across a project or portfolio. Company-level thinking about what makes a slate work and how to get projects to the right people.</p>
+      <div class="service-formats">Retainer · Project-based · Hourly</div>
+    </div>
+  </div>
+
+  <a href="#contact" class="btn btn-primary">Inquire about availability</a>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="short">
+  <p class="page-eyebrow">Background</p>
+  <h2 class="page-title">About GrayScript</h2>
+  <p class="page-intro">A development practice built on two careers — fifteen years in direct social services, six years in entertainment. The combination is the point.</p>
+
+  <p class="about-body">Before entering the entertainment industry, I spent fifteen years working directly in social services — with children, families, and communities navigating challenging life circumstances. That work taught me something no screenwriting course can: that people begin healing when they own their narratives. That tasting, touching, feeling, reconnecting to those narratives brings them home. A good story brings you home — even if you have never been there.</p>
+
+  <div class="pull-quote">"Making feelings mentionable and manageable starts early — through connecting to your own voice and learning how to use it."</div>
+
+  <p class="about-body">I transitioned into entertainment six years ago and have since served simultaneously as Story Editor, Producer, and Creative Executive on one of the highest-audience independent drama series ever produced — reaching more than 200 million viewers across 180 countries.</p>
+
+  <p class="about-body">GrayScript exists because the best creative development is a conversation, not a transaction. I work with writers and projects directly, bringing an executive's eye and a human services foundation to every engagement.</p>
+
+  <hr>
+
+  <p style="font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:0.5rem;">Selected Credits</p>
+
+  <ul class="credits-list">
+    <li>
+      <span class="credit-title">Story Editor</span>
+      <span class="credit-detail">Global drama series · 24 episodes · 2022–2025</span>
+    </li>
+    <li>
+      <span class="credit-title">Co-Producer</span>
+      <span class="credit-detail">Animated series · 14 episodes · 2025</span>
+    </li>
+    <li>
+      <span class="credit-title">Writers Assistant</span>
+      <span class="credit-detail">Drama series · 8 episodes · 2021</span>
+    </li>
+    <li>
+      <span class="credit-title">Story Editor — Pre-Production</span>
+      <span class="credit-detail">Scripted drama series</span>
+    </li>
+  </ul>
+
+  <p style="font-size:13px; font-weight:300; color:var(--ink-mid);">
+    <strong style="font-weight:500;">Education:</strong> Bachelor of Arts, Individualized Studies — Goddard College · Focus: Human Services
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="short">
+  <p class="page-eyebrow">Reach out</p>
+  <h2 class="page-title">Get in touch</h2>
+  <p class="page-intro">Tell me about your project and what you're looking for. I respond to every inquiry personally, typically within a few days.</p>
+
+  <div class="form-wrap">
+    <form id="contactForm" action="https://formspree.io/f/mpqkndav" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="service">Service</label>
+        <select id="service" name="service" required>
+          <option value="">Select a service</option>
+          <option>Script coverage</option>
+          <option>Story coaching</option>
+          <option>Development consulting</option>
+          <option>Something else</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="format">Project format</label>
+        <select id="format" name="format">
+          <option value="">Select a format</option>
+          <option>Feature screenplay</option>
+          <option>Pilot script</option>
+          <option>Limited series</option>
+          <option>Short film</option>
+          <option>Treatment / outline</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Tell me about your project</label>
+        <textarea id="message" name="message" placeholder="What are you working on, and what do you need?" required></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="New GrayScript inquiry">
+      <input type="hidden" name="_replyto" value="myeshagosselin@gmail.com">
+
+      <button type="submit" class="submit-btn" id="submitBtn">Send inquiry</button>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      Thank you — your message has been received. I'll be in touch within a few days.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">GrayScript</span>
+  <span class="footer-note">grayscript.net · Development · Story · Script</span>
+</footer>
+
+<script>
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Form submission
+  const form = document.getElementById('contactForm');
+  const btn = document.getElementById('submitBtn');
+  const success = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send inquiry';
+        alert('Something went wrong. Please try again.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send inquiry';
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>
+
+</body>
+</html>
